@@ -129,7 +129,7 @@ class CSICamera(BaseCamera):
     Camera for Jetson Nano IMX219 based camera
     Credit: https://github.com/feicccccccc/donkeycar/blob/dev/donkeycar/parts/camera.py
     '''
-    def gstreamer_pipeline(self,capture_width=120, capture_height=160, display_width=120, display_height=160, framerate=20, flip_method=0) :   
+    def gstreamer_pipeline(self,capture_width=120, capture_height=160, display_width=120, display_height=160, framerate=20, flip_method=2) :   
         return ('nvarguscamerasrc ! ' 
         'video/x-raw(memory:NVMM), '
         'width=(int)%d, height=(int)%d, '
@@ -153,7 +153,7 @@ class CSICamera(BaseCamera):
             self.gstreamer_pipeline(\
                 display_width=self.w,\
                     display_height=self.h,
-                    flip_method=0),
+                    flip_method=2),
                     cv2.CAP_GSTREAMER)
 
         self.poll_camera()
